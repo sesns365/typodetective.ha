@@ -238,7 +238,678 @@
         <section class="groups" id="lessonGroups" aria-live="polite"></section>
     </main>
     <script>
-        const LESSONS = [{"grade":"1A","lesson":"L01","title":"一起走","targets":10,"wordQuestions":10,"sentenceQuestions":10,"code":"翰1A01","path":"翰林-1A/翰1A01_一起走.html"},{"grade":"1A","lesson":"L02","title":"大風吹","targets":10,"wordQuestions":10,"sentenceQuestions":10,"code":"翰1A02","path":"翰林-1A/翰1A02_大風吹.html"},{"grade":"1A","lesson":"L03","title":"火車過山洞","targets":11,"wordQuestions":11,"sentenceQuestions":11,"code":"翰1A03","path":"翰林-1A/翰1A03_火車過山洞.html"},{"grade":"1A","lesson":"L04","title":"請問","targets":13,"wordQuestions":13,"sentenceQuestions":13,"code":"翰1A04","path":"翰林-1A/翰1A04_請問.html"},{"grade":"1A","lesson":"L05","title":"七彩的滑梯","targets":12,"wordQuestions":12,"sentenceQuestions":12,"code":"翰1A05","path":"翰林-1A/翰1A05_七彩的滑梯.html"},{"grade":"1A","lesson":"L06","title":"秋千","targets":11,"wordQuestions":11,"sentenceQuestions":11,"code":"翰1A06","path":"翰林-1A/翰1A06_秋千.html"},{"grade":"1A","lesson":"L07","title":"回音","targets":10,"wordQuestions":10,"sentenceQuestions":10,"code":"翰1A07","path":"翰林-1A/翰1A07_回音.html"},{"grade":"2A","lesson":"L01","title":"我的心情","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A01","path":"翰林-2A/翰2A01_我的心情.html"},{"grade":"2A","lesson":"L02","title":"彩色天空","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A02","path":"翰林-2A/翰2A02_彩色天空.html"},{"grade":"2A","lesson":"L03","title":"國王做新衣","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A03","path":"翰林-2A/翰2A03_國王做新衣.html"},{"grade":"2A","lesson":"L04","title":"水草下的呱呱","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A04","path":"翰林-2A/翰2A04_水草下的呱呱.html"},{"grade":"2A","lesson":"L05","title":"沙灘上的畫","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A05","path":"翰林-2A/翰2A05_沙灘上的畫.html"},{"grade":"2A","lesson":"L06","title":"草叢裡的星星","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A06","path":"翰林-2A/翰2A06_草叢裡的星星.html"},{"grade":"2A","lesson":"L07","title":"不一樣的美食","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A07","path":"翰林-2A/翰2A07_不一樣的美食.html"},{"grade":"2A","lesson":"L08","title":"美食分享日","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A08","path":"翰林-2A/翰2A08_美食分享日.html"},{"grade":"2A","lesson":"L09","title":"好味道","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A09","path":"翰林-2A/翰2A09_好味道.html"},{"grade":"2A","lesson":"L10","title":"加加減減","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A10","path":"翰林-2A/翰2A10_加加減減.html"},{"grade":"2A","lesson":"L11","title":"奇怪的門","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A11","path":"翰林-2A/翰2A11_奇怪的門.html"},{"grade":"2A","lesson":"L12","title":"詠鵝","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰2A12","path":"翰林-2A/翰2A12_詠鵝.html"},{"grade":"3A","lesson":"L01","title":"時間是什麼","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A01","path":"翰林-3A/翰3A01_時間是什麼.html"},{"grade":"3A","lesson":"L02","title":"妙用便利貼","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A02","path":"翰林-3A/翰3A02_妙用便利貼.html"},{"grade":"3A","lesson":"L03","title":"提早五分鐘","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A03","path":"翰林-3A/翰3A03_提早五分鐘.html"},{"grade":"3A","lesson":"L04","title":"猴子的數學","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A04","path":"翰林-3A/翰3A04_猴子的數學.html"},{"grade":"3A","lesson":"L05","title":"為梨花撐傘","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A05","path":"翰林-3A/翰3A05_為梨花撐傘.html"},{"grade":"3A","lesson":"L06","title":"小鉛筆大學問","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A06","path":"翰林-3A/翰3A06_小鉛筆大學問.html"},{"grade":"3A","lesson":"L07","title":"風的味道","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A07","path":"翰林-3A/翰3A07_風的味道.html"},{"grade":"3A","lesson":"L08","title":"寄居蟹找新家","targets":14,"wordQuestions":14,"sentenceQuestions":14,"code":"翰3A08","path":"翰林-3A/翰3A08_寄居蟹找新家.html"},{"grade":"3A","lesson":"L09","title":"阿塱壹古道","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A09","path":"翰林-3A/翰3A09_阿塱壹古道.html"},{"grade":"3A","lesson":"L10","title":"秋千上的婚禮","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A10","path":"翰林-3A/翰3A10_秋千上的婚禮.html"},{"grade":"3A","lesson":"L11","title":"一路平安","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A11","path":"翰林-3A/翰3A11_一路平安.html"},{"grade":"3A","lesson":"L12","title":"不一樣的團圓","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰3A12","path":"翰林-3A/翰3A12_不一樣的團圓.html"},{"grade":"4A","lesson":"L01","title":"美麗島","targets":14,"wordQuestions":14,"sentenceQuestions":14,"code":"翰4A01","path":"翰林-4A/翰4A01_美麗島.html"},{"grade":"4A","lesson":"L02","title":"請到我的家鄉來","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A02","path":"翰林-4A/翰4A02_請到我的家鄉來.html"},{"grade":"4A","lesson":"L03","title":"鏡頭下的家鄉","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A03","path":"翰林-4A/翰4A03_鏡頭下的家鄉.html"},{"grade":"4A","lesson":"L04","title":"飛行夢","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A04","path":"翰林-4A/翰4A04_飛行夢.html"},{"grade":"4A","lesson":"L05","title":"月光下","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A05","path":"翰林-4A/翰4A05_月光下.html"},{"grade":"4A","lesson":"L06","title":"又遠又近的月亮","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A06","path":"翰林-4A/翰4A06_又遠又近的月亮.html"},{"grade":"4A","lesson":"L07","title":"松鼠先生的麵包","targets":13,"wordQuestions":13,"sentenceQuestions":13,"code":"翰4A07","path":"翰林-4A/翰4A07_松鼠先生的麵包.html"},{"grade":"4A","lesson":"L08","title":"平凡的大俠","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A08","path":"翰林-4A/翰4A08_平凡的大俠.html"},{"grade":"4A","lesson":"L09","title":"王子折箭","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A09","path":"翰林-4A/翰4A09_王子折箭.html"},{"grade":"4A","lesson":"L10","title":"海中的熱帶雨林","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A10","path":"翰林-4A/翰4A10_海中的熱帶雨林.html"},{"grade":"4A","lesson":"L11","title":"美食島","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰4A11","path":"翰林-4A/翰4A11_美食島.html"},{"grade":"4A","lesson":"L12","title":"寧靜的音樂會","targets":14,"wordQuestions":14,"sentenceQuestions":14,"code":"翰4A12","path":"翰林-4A/翰4A12_寧靜的音樂會.html"},{"grade":"5A","lesson":"L01","title":"你我之間","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A01","path":"翰林-5A/翰5A01_你我之間.html"},{"grade":"5A","lesson":"L02","title":"風起，大家都在","targets":17,"wordQuestions":17,"sentenceQuestions":17,"code":"翰5A02","path":"翰林-5A/翰5A02_風起，大家都在.html"},{"grade":"5A","lesson":"L03","title":"廉頗與藺相如","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A03","path":"翰林-5A/翰5A03_廉頗與藺相如.html"},{"grade":"5A","lesson":"L04","title":"來場快樂的桌遊","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A04","path":"翰林-5A/翰5A04_來場快樂的桌遊.html"},{"grade":"5A","lesson":"L05","title":"超級英雄","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A05","path":"翰林-5A/翰5A05_超級英雄.html"},{"grade":"5A","lesson":"L06","title":"世足賽的贏家","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A06","path":"翰林-5A/翰5A06_世足賽的贏家.html"},{"grade":"5A","lesson":"L07","title":"美景閒情──詩兩首","targets":17,"wordQuestions":17,"sentenceQuestions":17,"code":"翰5A07","path":"翰林-5A/翰5A07_美景閒情──詩兩首.html"},{"grade":"5A","lesson":"L08","title":"葫蘆瓜","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰5A08","path":"翰林-5A/翰5A08_葫蘆瓜.html"},{"grade":"5A","lesson":"L09","title":"窗邊的鳴聲","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A09","path":"翰林-5A/翰5A09_窗邊的鳴聲.html"},{"grade":"5A","lesson":"L10","title":"敏銳觀察","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A10","path":"翰林-5A/翰5A10_敏銳觀察.html"},{"grade":"5A","lesson":"L11","title":"你一定會聽見的","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰5A11","path":"翰林-5A/翰5A11_你一定會聽見的.html"},{"grade":"5A","lesson":"L12","title":"藍色連身裙","targets":17,"wordQuestions":17,"sentenceQuestions":17,"code":"翰5A12","path":"翰林-5A/翰5A12_藍色連身裙.html"},{"grade":"6A","lesson":"L01","title":"遇見自己","targets":10,"wordQuestions":10,"sentenceQuestions":10,"code":"翰6A01","path":"翰林-6A/翰6A01_遇見自己.html"},{"grade":"6A","lesson":"L02","title":"為什麼大家不理我？","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰6A02","path":"翰林-6A/翰6A02_為什麼大家不理我？.html"},{"grade":"6A","lesson":"L03","title":"孔子說的話","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰6A03","path":"翰林-6A/翰6A03_孔子說的話.html"},{"grade":"6A","lesson":"L04","title":"向大自然學習","targets":17,"wordQuestions":17,"sentenceQuestions":17,"code":"翰6A04","path":"翰林-6A/翰6A04_向大自然學習.html"},{"grade":"6A","lesson":"L05","title":"樹的聯想","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰6A05","path":"翰林-6A/翰6A05_樹的聯想.html"},{"grade":"6A","lesson":"L06","title":"善用自嘲，展現幽默","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰6A06","path":"翰林-6A/翰6A06_善用自嘲，展現幽默.html"},{"grade":"6A","lesson":"L07","title":"跟著公共藝術去旅行","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰6A07","path":"翰林-6A/翰6A07_跟著公共藝術去旅行.html"},{"grade":"6A","lesson":"L08","title":"街頭藝術家","targets":18,"wordQuestions":18,"sentenceQuestions":18,"code":"翰6A08","path":"翰林-6A/翰6A08_街頭藝術家.html"},{"grade":"6A","lesson":"L09","title":"戲臺上的她與他","targets":17,"wordQuestions":17,"sentenceQuestions":17,"code":"翰6A09","path":"翰林-6A/翰6A09_戲臺上的她與他.html"},{"grade":"6A","lesson":"L10","title":"過故人莊","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰6A10","path":"翰林-6A/翰6A10_過故人莊.html"},{"grade":"6A","lesson":"L11","title":"來一碗溫暖的羹湯","targets":19,"wordQuestions":19,"sentenceQuestions":19,"code":"翰6A11","path":"翰林-6A/翰6A11_來一碗溫暖的羹湯.html"},{"grade":"6A","lesson":"L12","title":"存根","targets":15,"wordQuestions":15,"sentenceQuestions":15,"code":"翰6A12","path":"翰林-6A/翰6A12_存根.html"}];
+        const LESSONS = [
+  {
+    "grade": "1A",
+    "lesson": "L01",
+    "title": "一起走",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A01",
+    "path": "翰林-1A/翰1A01_一起走.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L02",
+    "title": "大風吹",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A02",
+    "path": "翰林-1A/翰1A02_大風吹.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L03",
+    "title": "火車過山洞",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰1A03",
+    "path": "翰林-1A/翰1A03_火車過山洞.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L04",
+    "title": "請問",
+    "targets": 13,
+    "wordQuestions": 13,
+    "sentenceQuestions": 13,
+    "code": "翰1A04",
+    "path": "翰林-1A/翰1A04_請問.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L05",
+    "title": "七彩的滑梯",
+    "targets": 12,
+    "wordQuestions": 12,
+    "sentenceQuestions": 12,
+    "code": "翰1A05",
+    "path": "翰林-1A/翰1A05_七彩的滑梯.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L06",
+    "title": "秋千",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰1A06",
+    "path": "翰林-1A/翰1A06_秋千.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L07",
+    "title": "回音",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A07",
+    "path": "翰林-1A/翰1A07_回音.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L01",
+    "title": "我的心情",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A01",
+    "path": "翰林-2A/翰2A01_我的心情.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L02",
+    "title": "彩色天空",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A02",
+    "path": "翰林-2A/翰2A02_彩色天空.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L03",
+    "title": "國王做新衣",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A03",
+    "path": "翰林-2A/翰2A03_國王做新衣.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L04",
+    "title": "水草下的呱呱",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A04",
+    "path": "翰林-2A/翰2A04_水草下的呱呱.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L05",
+    "title": "沙灘上的畫",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A05",
+    "path": "翰林-2A/翰2A05_沙灘上的畫.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L06",
+    "title": "草叢裡的星星",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A06",
+    "path": "翰林-2A/翰2A06_草叢裡的星星.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L07",
+    "title": "不一樣的美食",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A07",
+    "path": "翰林-2A/翰2A07_不一樣的美食.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L08",
+    "title": "美食分享日",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A08",
+    "path": "翰林-2A/翰2A08_美食分享日.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L09",
+    "title": "好味道",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A09",
+    "path": "翰林-2A/翰2A09_好味道.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L10",
+    "title": "加加減減",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A10",
+    "path": "翰林-2A/翰2A10_加加減減.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L11",
+    "title": "奇怪的門",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A11",
+    "path": "翰林-2A/翰2A11_奇怪的門.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L12",
+    "title": "詠鵝",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A12",
+    "path": "翰林-2A/翰2A12_詠鵝.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L01",
+    "title": "時間是什麼",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A01",
+    "path": "翰林-3A/翰3A01_時間是什麼.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L02",
+    "title": "妙用便利貼",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A02",
+    "path": "翰林-3A/翰3A02_妙用便利貼.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L03",
+    "title": "提早五分鐘",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A03",
+    "path": "翰林-3A/翰3A03_提早五分鐘.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L04",
+    "title": "水滾了",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A04",
+    "path": "翰林-3A/翰3A04_水滾了.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L05",
+    "title": "為梨花撐傘",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A05",
+    "path": "翰林-3A/翰3A05_為梨花撐傘.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L06",
+    "title": "小鉛筆大學問",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A06",
+    "path": "翰林-3A/翰3A06_小鉛筆大學問.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L07",
+    "title": "風的味道",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A07",
+    "path": "翰林-3A/翰3A07_風的味道.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L08",
+    "title": "寄居蟹找新家",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰3A08",
+    "path": "翰林-3A/翰3A08_寄居蟹找新家.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L09",
+    "title": "阿塱壹古道",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰3A09",
+    "path": "翰林-3A/翰3A09_阿塱壹古道.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L10",
+    "title": "秋千上的婚禮",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A10",
+    "path": "翰林-3A/翰3A10_秋千上的婚禮.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L11",
+    "title": "一路平安",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A11",
+    "path": "翰林-3A/翰3A11_一路平安.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L12",
+    "title": "不一樣的團圓",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A12",
+    "path": "翰林-3A/翰3A12_不一樣的團圓.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L01",
+    "title": "美麗島",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰4A01",
+    "path": "翰林-4A/翰4A01_美麗島.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L02",
+    "title": "請到我的家鄉來",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A02",
+    "path": "翰林-4A/翰4A02_請到我的家鄉來.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L03",
+    "title": "鏡頭下的家鄉",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A03",
+    "path": "翰林-4A/翰4A03_鏡頭下的家鄉.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L04",
+    "title": "飛行夢",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A04",
+    "path": "翰林-4A/翰4A04_飛行夢.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L05",
+    "title": "月光下",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A05",
+    "path": "翰林-4A/翰4A05_月光下.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L06",
+    "title": "又遠又近的月亮",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A06",
+    "path": "翰林-4A/翰4A06_又遠又近的月亮.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L07",
+    "title": "松鼠先生的麵包",
+    "targets": 13,
+    "wordQuestions": 13,
+    "sentenceQuestions": 13,
+    "code": "翰4A07",
+    "path": "翰林-4A/翰4A07_松鼠先生的麵包.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L08",
+    "title": "平凡的大俠",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A08",
+    "path": "翰林-4A/翰4A08_平凡的大俠.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L09",
+    "title": "王子折箭",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A09",
+    "path": "翰林-4A/翰4A09_王子折箭.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L10",
+    "title": "海中的熱帶雨林",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A10",
+    "path": "翰林-4A/翰4A10_海中的熱帶雨林.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L11",
+    "title": "美食島",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A11",
+    "path": "翰林-4A/翰4A11_美食島.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L12",
+    "title": "寧靜的音樂會",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰4A12",
+    "path": "翰林-4A/翰4A12_寧靜的音樂會.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L01",
+    "title": "你我之間",
+    "targets": 12,
+    "wordQuestions": 12,
+    "sentenceQuestions": 12,
+    "code": "翰5A01",
+    "path": "翰林-5A/翰5A01_你我之間.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L02",
+    "title": "風起，大家都在",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A02",
+    "path": "翰林-5A/翰5A02_風起，大家都在.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L03",
+    "title": "廉頗與藺相如",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰5A03",
+    "path": "翰林-5A/翰5A03_廉頗與藺相如.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L04",
+    "title": "來場快樂的桌遊",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A04",
+    "path": "翰林-5A/翰5A04_來場快樂的桌遊.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L05",
+    "title": "超級英雄",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A05",
+    "path": "翰林-5A/翰5A05_超級英雄.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L06",
+    "title": "世足賽的贏家",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A06",
+    "path": "翰林-5A/翰5A06_世足賽的贏家.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L07",
+    "title": "美景閒情──詩兩首",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A07",
+    "path": "翰林-5A/翰5A07_美景閒情──詩兩首.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L08",
+    "title": "葫蘆瓜",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰5A08",
+    "path": "翰林-5A/翰5A08_葫蘆瓜.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L09",
+    "title": "窗邊的鳴聲",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A09",
+    "path": "翰林-5A/翰5A09_窗邊的鳴聲.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L10",
+    "title": "敏銳觀察",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A10",
+    "path": "翰林-5A/翰5A10_敏銳觀察.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L11",
+    "title": "你一定會聽見的",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A11",
+    "path": "翰林-5A/翰5A11_你一定會聽見的.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L12",
+    "title": "藍色連身裙",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A12",
+    "path": "翰林-5A/翰5A12_藍色連身裙.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L01",
+    "title": "遇見自己",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰6A01",
+    "path": "翰林-6A/翰6A01_遇見自己.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L02",
+    "title": "為什麼大家不理我？",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A02",
+    "path": "翰林-6A/翰6A02_為什麼大家不理我？.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L03",
+    "title": "孔子說的話",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A03",
+    "path": "翰林-6A/翰6A03_孔子說的話.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L04",
+    "title": "向大自然學習",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A04",
+    "path": "翰林-6A/翰6A04_向大自然學習.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L05",
+    "title": "樹的聯想",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A05",
+    "path": "翰林-6A/翰6A05_樹的聯想.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L06",
+    "title": "善用自嘲，展現幽默",
+    "targets": 16,
+    "wordQuestions": 16,
+    "sentenceQuestions": 16,
+    "code": "翰6A06",
+    "path": "翰林-6A/翰6A06_善用自嘲，展現幽默.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L07",
+    "title": "跟著公共藝術去旅行",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A07",
+    "path": "翰林-6A/翰6A07_跟著公共藝術去旅行.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L08",
+    "title": "街頭藝術家",
+    "targets": 16,
+    "wordQuestions": 16,
+    "sentenceQuestions": 16,
+    "code": "翰6A08",
+    "path": "翰林-6A/翰6A08_街頭藝術家.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L09",
+    "title": "戲臺上的她與他",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A09",
+    "path": "翰林-6A/翰6A09_戲臺上的她與他.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L10",
+    "title": "過故人莊",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰6A10",
+    "path": "翰林-6A/翰6A10_過故人莊.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L11",
+    "title": "來一碗溫暖的羹湯",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰6A11",
+    "path": "翰林-6A/翰6A11_來一碗溫暖的羹湯.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L12",
+    "title": "存根",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰6A12",
+    "path": "翰林-6A/翰6A12_存根.html"
+  }
+];
         const ALL = "\u5168\u90e8";
         const state = { grade: ALL, query: "" };
         const gradeOrder = [ALL, "1A", "2A", "3A", "4A", "5A", "6A"];
@@ -336,4 +1007,3 @@
     </script>
 </body>
 </html>
-
