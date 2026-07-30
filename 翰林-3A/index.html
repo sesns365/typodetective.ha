@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翰林版 - &#x932F;&#x5B57;&#x641C;&#x67E5;&#x968A;</title>
+    <style>
+        :root {
+            --bg: #f7faf9;
+            --panel: #ffffff;
+            --ink: #163235;
+            --muted: #526a6e;
+            --line: #d7e4e2;
+            --brand: #198a86;
+            --brand-dark: #12615f;
+            --accent: #f2a541;
+            --rose: #d85f6f;
+            --blue: #3f6fab;
+            --shadow: 0 14px 34px rgba(21, 72, 77, 0.14);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(180deg, rgba(25, 138, 134, 0.10), transparent 280px), var(--bg);
+            color: var(--ink);
+            font-family: "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
+        }
+        main {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 28px 0 42px;
+        }
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.8rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+        .subtitle {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .count {
+            min-width: 128px;
+            padding: 14px 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .count strong {
+            display: block;
+            color: var(--brand-dark);
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .count span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        .toolbar {
+            display: grid;
+            gap: 14px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+            box-shadow: var(--shadow);
+        }
+        .filter-row {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+        .filter-label {
+            padding-top: 9px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+        .segmented {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        button, input, a { font: inherit; }
+        .chip {
+            min-height: 42px;
+            padding: 0 16px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #f8fbfa;
+            color: var(--ink);
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .chip[aria-pressed="true"] {
+            border-color: var(--brand);
+            background: var(--brand);
+            color: #ffffff;
+        }
+        .search {
+            width: 100%;
+            min-height: 46px;
+            padding: 0 14px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #ffffff;
+            color: var(--ink);
+        }
+        .search:focus,
+        .chip:focus,
+        .lesson-card:focus {
+            outline: 3px solid rgba(25, 138, 134, 0.22);
+            outline-offset: 2px;
+        }
+        .groups {
+            display: grid;
+            gap: 18px;
+            margin-top: 18px;
+        }
+        .group {
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.86);
+        }
+        .group-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+            margin: 0 0 14px;
+            font-size: 1.35rem;
+        }
+        .group-title span {
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 12px;
+        }
+        .lesson-card {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            min-height: 118px;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-left: 6px solid var(--brand);
+            border-radius: 8px;
+            background: #ffffff;
+            color: inherit;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(21, 72, 77, 0.08);
+        }
+        .lesson-card:nth-child(3n + 2) { border-left-color: var(--accent); }
+        .lesson-card:nth-child(3n) { border-left-color: var(--rose); }
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(21, 72, 77, 0.14);
+        }
+        .lesson-code {
+            color: var(--blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+        }
+        .lesson-title {
+            margin: 10px 0;
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+        .lesson-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .empty {
+            padding: 28px;
+            border: 1px dashed var(--line);
+            border-radius: 8px;
+            background: #ffffff;
+            color: var(--muted);
+            text-align: center;
+            font-weight: 700;
+        }
+        @media (max-width: 720px) {
+            main { width: min(100% - 20px, 1180px); padding-top: 18px; }
+            header { grid-template-columns: 1fr; }
+            .count { width: 100%; text-align: left; }
+            .filter-row { grid-template-columns: 1fr; gap: 8px; }
+            .filter-label { padding-top: 0; }
+            .chip { flex: 1 1 86px; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div>
+                <h1>翰林版</h1>
+                <p class="subtitle">&#x9078;&#x64C7;&#x5E74;&#x7D1A;&#x8207;&#x8AB2;&#x6B21;&#xFF0C;&#x9032;&#x5165;&#x5C0D;&#x61C9;&#x7684;&#x5B57;&#x8A5E;&#x8207;&#x53E5;&#x5B50;&#x7DF4;&#x7FD2;&#x3002;</p>
+            </div>
+            <div class="count" aria-live="polite">
+                <strong id="visibleCount">0</strong>
+                <span>&#x76EE;&#x524D;&#x8AB2;&#x6578;</span>
+            </div>
+        </header>
+        <section class="toolbar" aria-label="lesson filters">
+            <div class="filter-row">
+                <div class="filter-label">&#x5E74;&#x7D1A;</div>
+                <div class="segmented" id="gradeFilters"></div>
+            </div>
+            <div class="filter-row">
+                <label class="filter-label" for="searchInput">&#x641C;&#x5C0B;</label>
+                <input class="search" id="searchInput" type="search" autocomplete="off" placeholder="&#x8F38;&#x5165;&#x8AB2;&#x540D;&#x6216;&#x8AB2;&#x78BC;">
+            </div>
+        </section>
+        <section class="groups" id="lessonGroups" aria-live="polite"></section>
+    </main>
+    <script>
+        const LESSONS = [
+  {
+    "grade": "1A",
+    "lesson": "L01",
+    "title": "一起走",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A01",
+    "path": "翰林-1A/翰1A01_一起走.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L02",
+    "title": "大風吹",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A02",
+    "path": "翰林-1A/翰1A02_大風吹.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L03",
+    "title": "火車過山洞",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰1A03",
+    "path": "翰林-1A/翰1A03_火車過山洞.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L04",
+    "title": "請問",
+    "targets": 13,
+    "wordQuestions": 13,
+    "sentenceQuestions": 13,
+    "code": "翰1A04",
+    "path": "翰林-1A/翰1A04_請問.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L05",
+    "title": "七彩的滑梯",
+    "targets": 12,
+    "wordQuestions": 12,
+    "sentenceQuestions": 12,
+    "code": "翰1A05",
+    "path": "翰林-1A/翰1A05_七彩的滑梯.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L06",
+    "title": "秋千",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰1A06",
+    "path": "翰林-1A/翰1A06_秋千.html"
+  },
+  {
+    "grade": "1A",
+    "lesson": "L07",
+    "title": "回音",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰1A07",
+    "path": "翰林-1A/翰1A07_回音.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L01",
+    "title": "我的心情",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A01",
+    "path": "翰林-2A/翰2A01_我的心情.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L02",
+    "title": "彩色天空",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A02",
+    "path": "翰林-2A/翰2A02_彩色天空.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L03",
+    "title": "國王做新衣",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A03",
+    "path": "翰林-2A/翰2A03_國王做新衣.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L04",
+    "title": "水草下的呱呱",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A04",
+    "path": "翰林-2A/翰2A04_水草下的呱呱.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L05",
+    "title": "沙灘上的畫",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A05",
+    "path": "翰林-2A/翰2A05_沙灘上的畫.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L06",
+    "title": "草叢裡的星星",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A06",
+    "path": "翰林-2A/翰2A06_草叢裡的星星.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L07",
+    "title": "不一樣的美食",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A07",
+    "path": "翰林-2A/翰2A07_不一樣的美食.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L08",
+    "title": "美食分享日",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A08",
+    "path": "翰林-2A/翰2A08_美食分享日.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L09",
+    "title": "好味道",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A09",
+    "path": "翰林-2A/翰2A09_好味道.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L10",
+    "title": "加加減減",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A10",
+    "path": "翰林-2A/翰2A10_加加減減.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L11",
+    "title": "奇怪的門",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A11",
+    "path": "翰林-2A/翰2A11_奇怪的門.html"
+  },
+  {
+    "grade": "2A",
+    "lesson": "L12",
+    "title": "詠鵝",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰2A12",
+    "path": "翰林-2A/翰2A12_詠鵝.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L01",
+    "title": "時間是什麼",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A01",
+    "path": "翰林-3A/翰3A01_時間是什麼.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L02",
+    "title": "妙用便利貼",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A02",
+    "path": "翰林-3A/翰3A02_妙用便利貼.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L03",
+    "title": "提早五分鐘",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A03",
+    "path": "翰林-3A/翰3A03_提早五分鐘.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L04",
+    "title": "水滾了",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A04",
+    "path": "翰林-3A/翰3A04_水滾了.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L05",
+    "title": "為梨花撐傘",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A05",
+    "path": "翰林-3A/翰3A05_為梨花撐傘.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L06",
+    "title": "小鉛筆大學問",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A06",
+    "path": "翰林-3A/翰3A06_小鉛筆大學問.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L07",
+    "title": "風的味道",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A07",
+    "path": "翰林-3A/翰3A07_風的味道.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L08",
+    "title": "寄居蟹找新家",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰3A08",
+    "path": "翰林-3A/翰3A08_寄居蟹找新家.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L09",
+    "title": "阿塱壹古道",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰3A09",
+    "path": "翰林-3A/翰3A09_阿塱壹古道.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L10",
+    "title": "秋千上的婚禮",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A10",
+    "path": "翰林-3A/翰3A10_秋千上的婚禮.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L11",
+    "title": "一路平安",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A11",
+    "path": "翰林-3A/翰3A11_一路平安.html"
+  },
+  {
+    "grade": "3A",
+    "lesson": "L12",
+    "title": "不一樣的團圓",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰3A12",
+    "path": "翰林-3A/翰3A12_不一樣的團圓.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L01",
+    "title": "美麗島",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰4A01",
+    "path": "翰林-4A/翰4A01_美麗島.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L02",
+    "title": "請到我的家鄉來",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A02",
+    "path": "翰林-4A/翰4A02_請到我的家鄉來.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L03",
+    "title": "鏡頭下的家鄉",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A03",
+    "path": "翰林-4A/翰4A03_鏡頭下的家鄉.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L04",
+    "title": "飛行夢",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A04",
+    "path": "翰林-4A/翰4A04_飛行夢.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L05",
+    "title": "月光下",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A05",
+    "path": "翰林-4A/翰4A05_月光下.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L06",
+    "title": "又遠又近的月亮",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A06",
+    "path": "翰林-4A/翰4A06_又遠又近的月亮.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L07",
+    "title": "松鼠先生的麵包",
+    "targets": 13,
+    "wordQuestions": 13,
+    "sentenceQuestions": 13,
+    "code": "翰4A07",
+    "path": "翰林-4A/翰4A07_松鼠先生的麵包.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L08",
+    "title": "平凡的大俠",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A08",
+    "path": "翰林-4A/翰4A08_平凡的大俠.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L09",
+    "title": "王子折箭",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A09",
+    "path": "翰林-4A/翰4A09_王子折箭.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L10",
+    "title": "海中的熱帶雨林",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A10",
+    "path": "翰林-4A/翰4A10_海中的熱帶雨林.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L11",
+    "title": "美食島",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰4A11",
+    "path": "翰林-4A/翰4A11_美食島.html"
+  },
+  {
+    "grade": "4A",
+    "lesson": "L12",
+    "title": "寧靜的音樂會",
+    "targets": 14,
+    "wordQuestions": 14,
+    "sentenceQuestions": 14,
+    "code": "翰4A12",
+    "path": "翰林-4A/翰4A12_寧靜的音樂會.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L01",
+    "title": "你我之間",
+    "targets": 12,
+    "wordQuestions": 12,
+    "sentenceQuestions": 12,
+    "code": "翰5A01",
+    "path": "翰林-5A/翰5A01_你我之間.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L02",
+    "title": "風起，大家都在",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A02",
+    "path": "翰林-5A/翰5A02_風起，大家都在.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L03",
+    "title": "廉頗與藺相如",
+    "targets": 11,
+    "wordQuestions": 11,
+    "sentenceQuestions": 11,
+    "code": "翰5A03",
+    "path": "翰林-5A/翰5A03_廉頗與藺相如.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L04",
+    "title": "來場快樂的桌遊",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A04",
+    "path": "翰林-5A/翰5A04_來場快樂的桌遊.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L05",
+    "title": "超級英雄",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A05",
+    "path": "翰林-5A/翰5A05_超級英雄.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L06",
+    "title": "世足賽的贏家",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A06",
+    "path": "翰林-5A/翰5A06_世足賽的贏家.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L07",
+    "title": "美景閒情──詩兩首",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A07",
+    "path": "翰林-5A/翰5A07_美景閒情──詩兩首.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L08",
+    "title": "葫蘆瓜",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰5A08",
+    "path": "翰林-5A/翰5A08_葫蘆瓜.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L09",
+    "title": "窗邊的鳴聲",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A09",
+    "path": "翰林-5A/翰5A09_窗邊的鳴聲.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L10",
+    "title": "敏銳觀察",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A10",
+    "path": "翰林-5A/翰5A10_敏銳觀察.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L11",
+    "title": "你一定會聽見的",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰5A11",
+    "path": "翰林-5A/翰5A11_你一定會聽見的.html"
+  },
+  {
+    "grade": "5A",
+    "lesson": "L12",
+    "title": "藍色連身裙",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰5A12",
+    "path": "翰林-5A/翰5A12_藍色連身裙.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L01",
+    "title": "遇見自己",
+    "targets": 10,
+    "wordQuestions": 10,
+    "sentenceQuestions": 10,
+    "code": "翰6A01",
+    "path": "翰林-6A/翰6A01_遇見自己.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L02",
+    "title": "為什麼大家不理我？",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A02",
+    "path": "翰林-6A/翰6A02_為什麼大家不理我？.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L03",
+    "title": "孔子說的話",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A03",
+    "path": "翰林-6A/翰6A03_孔子說的話.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L04",
+    "title": "向大自然學習",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A04",
+    "path": "翰林-6A/翰6A04_向大自然學習.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L05",
+    "title": "樹的聯想",
+    "targets": 18,
+    "wordQuestions": 18,
+    "sentenceQuestions": 18,
+    "code": "翰6A05",
+    "path": "翰林-6A/翰6A05_樹的聯想.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L06",
+    "title": "善用自嘲，展現幽默",
+    "targets": 16,
+    "wordQuestions": 16,
+    "sentenceQuestions": 16,
+    "code": "翰6A06",
+    "path": "翰林-6A/翰6A06_善用自嘲，展現幽默.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L07",
+    "title": "跟著公共藝術去旅行",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A07",
+    "path": "翰林-6A/翰6A07_跟著公共藝術去旅行.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L08",
+    "title": "街頭藝術家",
+    "targets": 16,
+    "wordQuestions": 16,
+    "sentenceQuestions": 16,
+    "code": "翰6A08",
+    "path": "翰林-6A/翰6A08_街頭藝術家.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L09",
+    "title": "戲臺上的她與他",
+    "targets": 17,
+    "wordQuestions": 17,
+    "sentenceQuestions": 17,
+    "code": "翰6A09",
+    "path": "翰林-6A/翰6A09_戲臺上的她與他.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L10",
+    "title": "過故人莊",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰6A10",
+    "path": "翰林-6A/翰6A10_過故人莊.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L11",
+    "title": "來一碗溫暖的羹湯",
+    "targets": 19,
+    "wordQuestions": 19,
+    "sentenceQuestions": 19,
+    "code": "翰6A11",
+    "path": "翰林-6A/翰6A11_來一碗溫暖的羹湯.html"
+  },
+  {
+    "grade": "6A",
+    "lesson": "L12",
+    "title": "存根",
+    "targets": 15,
+    "wordQuestions": 15,
+    "sentenceQuestions": 15,
+    "code": "翰6A12",
+    "path": "翰林-6A/翰6A12_存根.html"
+  }
+];
+        const ALL = "\u5168\u90e8";
+        const state = { grade: ALL, query: "" };
+        const gradeOrder = [ALL, "1A", "2A", "3A", "4A", "5A", "6A"];
+        const gradeFilters = document.getElementById("gradeFilters");
+        const lessonGroups = document.getElementById("lessonGroups");
+        const visibleCount = document.getElementById("visibleCount");
+        const searchInput = document.getElementById("searchInput");
+
+        function createFilterButton(label) {
+            const button = document.createElement("button");
+            button.className = "chip";
+            button.type = "button";
+            button.textContent = label;
+            button.setAttribute("aria-pressed", state.grade === label ? "true" : "false");
+            button.addEventListener("click", () => {
+                state.grade = label;
+                render();
+            });
+            return button;
+        }
+        function renderFilters() {
+            gradeFilters.replaceChildren(...gradeOrder.map(createFilterButton));
+        }
+        function lessonNumber(item) {
+            const match = String(item.lesson).match(/\d+/);
+            return match ? Number(match[0]) : 0;
+        }
+        function filterLessons() {
+            const query = state.query.trim().toLowerCase();
+            return LESSONS
+                .filter(item => state.grade === ALL || item.grade === state.grade)
+                .filter(item => {
+                    if (!query) return true;
+                    return [item.grade, item.lesson, item.title, item.code].join(" ").toLowerCase().includes(query);
+                })
+                .sort((a, b) => {
+                    const gradeDiff = gradeOrder.indexOf(a.grade) - gradeOrder.indexOf(b.grade);
+                    if (gradeDiff) return gradeDiff;
+                    const lessonDiff = lessonNumber(a) - lessonNumber(b);
+                    if (lessonDiff) return lessonDiff;
+                    return a.title.localeCompare(b.title, "zh-Hant");
+                });
+        }
+        function renderLessonCard(item) {
+            const card = document.createElement("a");
+            card.className = "lesson-card";
+            card.href = encodeURI(item.path);
+            const code = document.createElement("div");
+            code.className = "lesson-code";
+            code.textContent = item.lesson;
+            const title = document.createElement("div");
+            title.className = "lesson-title";
+            title.textContent = item.title;
+            card.append(code, title);
+            return card;
+        }
+        function renderGroups(lessons) {
+            if (!lessons.length) {
+                const empty = document.createElement("div");
+                empty.className = "empty";
+                empty.textContent = "\u627e\u4e0d\u5230\u7b26\u5408\u689d\u4ef6\u7684\u8ab2\u7a0b";
+                lessonGroups.replaceChildren(empty);
+                return;
+            }
+            const grouped = new Map();
+            lessons.forEach(item => {
+                if (!grouped.has(item.grade)) grouped.set(item.grade, []);
+                grouped.get(item.grade).push(item);
+            });
+            const sections = Array.from(grouped.entries()).map(([grade, items]) => {
+                const section = document.createElement("section");
+                section.className = "group";
+                const title = document.createElement("h2");
+                title.className = "group-title";
+                title.innerHTML = `${grade}<span>${items.length} \u8ab2</span>`;
+                const grid = document.createElement("div");
+                grid.className = "lesson-grid";
+                grid.append(...items.map(renderLessonCard));
+                section.append(title, grid);
+                return section;
+            });
+            lessonGroups.replaceChildren(...sections);
+        }
+        function render() {
+            renderFilters();
+            const lessons = filterLessons();
+            visibleCount.textContent = lessons.length;
+            renderGroups(lessons);
+        }
+        searchInput.addEventListener("input", event => {
+            state.query = event.target.value;
+            render();
+        });
+        render();
+    </script>
+</body>
+</html>
