@@ -165,7 +165,6 @@
             min-height: 1.8rem;
             flex-shrink: 0;
         }
-
         /* 詞語挑戰區 - 應用字體縮放變數 */
         .word-container {
             background-color: #E8F5E9;
@@ -179,6 +178,21 @@
             width: 100%;
             transition: font-size 0.2s;
         }
+        .zhuyin-hint {
+            min-height: 2.35rem;
+            margin: 0 0 0.6rem;
+            padding: 0.35rem 1rem;
+            border-radius: 12px;
+            background: #E0F2F1;
+            color: #00796B;
+            font-size: calc(1.45rem * var(--game-font-scale));
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 0.18em;
+            transition: font-size 0.2s, opacity 0.2s;
+        }
+        .zhuyin-hint.is-hidden { visibility: hidden; opacity: 0; }
+
         .word-placeholder {
             display: inline-block;
             min-width: 1.5em; 
@@ -189,6 +203,306 @@
             line-height: 1;
         }
         
+        .zhuyin-char {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.06em;
+            letter-spacing: 0;
+            line-height: 1;
+        }
+        .zhuyin-base {
+            display: inline-block;
+            line-height: 1.1;
+        }
+        .zhuyin-syllable {
+            display: inline-block;
+            position: relative;
+            width: 1.9em;
+            height: 4em;
+            flex: 0 0 1.9em;
+            vertical-align: middle;
+            font-size: 0.42em;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 400;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
+        }
+        .zhuyin-stack {
+            position: absolute;
+            left: 0;
+            top: var(--stack-top);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1em;
+        }
+        .zhuyin-stack > span {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: 0;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            left: 1.5em;
+            top: calc(var(--tone-top) - 0.62em);
+            width: 0.7em;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .zhuyin-neutral {
+            position: absolute;
+            left: 0.05em;
+            top: calc(var(--stack-top) - 1.1em);
+            width: 1em;
+            line-height: 1;
+            text-align: center;
+        }
+        /* 逐字注音間距調整 */
+        .zhuyin-char {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.06em;
+            letter-spacing: 0;
+            line-height: 1;
+        }
+        .zhuyin-base {
+            display: inline-block;
+            line-height: 1.1;
+        }
+        .zhuyin-syllable {
+            display: inline-block;
+            position: relative;
+            width: 1.85em;
+            height: 4em;
+            flex: 0 0 1.85em;
+            vertical-align: middle;
+            font-size: 0.42em;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 400;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
+        }
+        .zhuyin-stack {
+            position: absolute;
+            left: 0;
+            top: var(--stack-top);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1em;
+        }
+        .zhuyin-stack > span {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: 0;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            left: 1.2em;
+            top: calc(var(--tone-top) - 0.6em);
+            width: 0.7em;
+            line-height: 1;
+            text-align: center;
+        }
+        .zhuyin-neutral {
+            position: absolute;
+            left: 0;
+            top: calc(var(--stack-top) - 0.8em);
+            width: 1em;
+            line-height: 1;
+            text-align: center;
+        }
+        /* 逐字注音間距調整 v2 */
+        .zhuyin-char {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.06em;
+            letter-spacing: 0;
+            line-height: 1;
+        }
+        .zhuyin-base {
+            display: inline-block;
+            line-height: 1.1;
+        }
+        .zhuyin-syllable {
+            display: inline-block;
+            position: relative;
+            width: 2.1em;
+            height: 4em;
+            flex: 0 0 2.1em;
+            vertical-align: middle;
+            font-size: 0.42em;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 400;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
+        }
+        .zhuyin-stack {
+            position: absolute;
+            left: 0;
+            top: var(--stack-top);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1em;
+        }
+        .zhuyin-stack > span {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: 0;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            left: 1.4em;
+            top: calc(var(--tone-top) - 0.6em);
+            width: 0.7em;
+            line-height: 1;
+            text-align: center;
+        }
+        .zhuyin-neutral {
+            position: absolute;
+            left: 0;
+            top: calc(var(--stack-top) - 0.8em);
+            width: 1em;
+            line-height: 1;
+            text-align: center;
+        }
+        /* 逐字注音間距調整 v3 */
+        .zhuyin-char {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.06em;
+            letter-spacing: 0;
+            line-height: 1;
+        }
+        .zhuyin-base {
+            display: inline-block;
+            line-height: 1.1;
+        }
+        .zhuyin-syllable {
+            display: inline-block;
+            position: relative;
+            width: 2.25em;
+            height: 4em;
+            flex: 0 0 2.25em;
+            vertical-align: middle;
+            font-size: 0.42em;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 400;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
+        }
+        .zhuyin-stack {
+            position: absolute;
+            left: 0;
+            top: var(--stack-top);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1em;
+        }
+        .zhuyin-stack > span {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: 0;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            left: 1.55em;
+            top: calc(var(--tone-top) - 0.6em);
+            width: 0.7em;
+            line-height: 1;
+            text-align: center;
+        }
+        .zhuyin-neutral {
+            position: absolute;
+            left: 0;
+            top: calc(var(--stack-top) - 0.8em);
+            width: 1em;
+            line-height: 1;
+            text-align: center;
+        }
+        /* 逐字注音間距調整 v4 */
+        .zhuyin-char {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.06em;
+            letter-spacing: 0;
+            line-height: 1;
+        }
+        .zhuyin-base {
+            display: inline-block;
+            line-height: 1.1;
+        }
+        .zhuyin-syllable {
+            display: inline-block;
+            position: relative;
+            width: 2.1em;
+            height: 4em;
+            flex: 0 0 2.1em;
+            vertical-align: middle;
+            font-size: 0.42em;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 400;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
+        }
+        .zhuyin-stack {
+            position: absolute;
+            left: 0;
+            top: var(--stack-top);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1em;
+        }
+        .zhuyin-stack > span {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            letter-spacing: 0;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            left: 1.55em;
+            top: calc(var(--tone-top) - 0.6em);
+            width: 0.7em;
+            line-height: 1;
+            text-align: center;
+        }
+        .zhuyin-neutral {
+            position: absolute;
+            left: 0;
+            top: calc(var(--stack-top) - 0.8em);
+            width: 1em;
+            line-height: 1;
+            text-align: center;
+        }
         /* 報讀按鈕樣式 */
         .speaker-icon {
             font-size: 1.5rem; 
@@ -350,8 +664,65 @@
 
         /* PDF 樣式 */
         .pdf-report-container { font-family: 'Iansui', '標楷體', sans-serif; }
+        .zhuyin-ruby {
+            ruby-position: over;
+            ruby-align: center;
+            margin: 0 0.04em;
+            white-space: nowrap;
+        }
+        .zhuyin-ruby rt {
+            color: #00796B;
+            font-size: 0.38em;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0;
+            user-select: none;
+        }
+        .option-btn .zhuyin-ruby rt { font-size: 0.36em; }
+        .sentence-container .zhuyin-ruby rt { font-size: 0.42em; }
+        .zhuyin-side {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 0.08em;
+            white-space: nowrap;
+        }
+        .zhuyin-base { display: inline-block; line-height: 1; }
+        .zhuyin-annotation {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.08em;
+            font-size: 0.34em;
+            line-height: 0.78;
+            letter-spacing: 0;
+        }
+        .zhuyin-symbol {
+            display: block;
+            position: relative;
+            min-height: 0.8em;
+            line-height: 0.78;
+        }
+        .zhuyin-tone {
+            position: absolute;
+            top: -0.34em;
+            right: -0.55em;
+            font-size: 0.78em;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .option-btn .zhuyin-annotation { font-size: 0.38em; }
+        .sentence-container .zhuyin-annotation { font-size: 0.36em; }
+
+
 
     </style>
+<style id="zhuyin-final-side-layout">
+        /* 直式注音的聲調與最後符號保持清楚間距 */
+        .zhuyin-syllable { width: 2.1em !important; flex-basis: 2.1em !important; }
+        .zhuyin-syllable > .zhuyin-tone { left: 1.7em !important; top: calc(var(--tone-top) - 0.62em) !important; }
+</style>
 </head>
 <body class="flex items-center justify-center min-h-screen relative bg-gray-100">
 <style id="lesson-home-link-style">
@@ -447,14 +818,15 @@
         <h2 class="text-2xl font-bold text-gray-700 mb-4 text-center">⚙️ 設定</h2>
         
         <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6 text-left">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-lg font-bold text-gray-600">🔊 語音設定</span>
+                                                                        <div class="flex items-center justify-between mb-3">
+                <span class="text-lg font-bold text-gray-600">🔤 注音顯示</span>
                 <label class="flex items-center cursor-pointer">
-                    <input type="checkbox" id="enableSpeech" class="form-checkbox h-5 w-5 text-teal-600 rounded" checked onchange="updateVoiceSettings()">
-                    <span class="ml-2 text-gray-700 font-bold">開啟報讀</span>
+                    <input type="checkbox" id="showZhuyin" class="form-checkbox h-5 w-5 text-teal-600 rounded" onchange="updateZhuyinSettings()">
+                    <span class="ml-2 text-gray-700 font-bold">顯示每字注音</span>
                 </label>
             </div>
-            <select id="voiceSelect" class="select-style w-full border-gray-300 mb-3 h-10 py-1 text-base"></select>
+            <p class="text-sm text-gray-500 mb-3">開啟後，題目、句子與選項中的每個字都會在右側顯示台灣注音。</p>
+<select id="voiceSelect" class="select-style w-full border-gray-300 mb-3 h-10 py-1 text-base"></select>
             <div class="flex items-center bg-gray-100 rounded-lg p-2 mb-3">
                 <span class="text-sm font-bold text-gray-500 mr-2">語速</span>
                 <input type="range" id="rateRange" min="0.5" max="2.0" step="0.1" value="1.0" class="flex-1 accent-teal-600" onchange="updateRateLabel()">
@@ -479,8 +851,7 @@
                     <span id="fontPreviewText" class="font-bold text-teal-700">閱讀與寫作</span>
                 </div>
             </div>
-
-            <button onclick="testVoice('這是報讀測試語音')" class="btn btn-sm btn-secondary w-full">🔊 試聽語音</button>
+<button onclick="testVoice('這是報讀測試語音')" class="btn btn-sm btn-secondary w-full">🔊 試聽語音</button>
         </div>
 
         <button onclick="closeSettingsModal()" class="btn btn-primary w-full text-lg">完成</button>
@@ -631,7 +1002,7 @@
             }
             return arr;
         }
-        const QUESTIONS_DB = {
+const QUESTIONS_DB = {
   "word": [
     {
       "id": "w1",
@@ -802,111 +1173,118 @@
   "sentence": [
     {
       "id": "s1",
-      "q": "獵人從背後的[前]袋中抽出一枝利箭。",
+      "q": "獵人從背後的前袋中抽出一枝利箭。",
       "wrong": "前",
       "a": "箭",
       "full": "獵人從背後的箭袋中抽出一枝利箭。"
     },
     {
       "id": "s2",
-      "q": "關羽是一位驍勇[膳]戰的將軍，立下許多汗馬功勞。",
+      "q": "關羽是一位驍勇膳戰的將軍，立下許多汗馬功勞。",
       "wrong": "膳",
       "a": "善",
       "full": "關羽是一位驍勇善戰的將軍，立下許多汗馬功勞。"
     },
     {
       "id": "s3",
-      "q": "政府的職責應該是全心全意為人[名]服務。",
+      "q": "政府的職責應該是全心全意為人名服務。",
       "wrong": "名",
       "a": "民",
       "full": "政府的職責應該是全心全意為人民服務。"
     },
     {
       "id": "s4",
-      "q": "這對雙胞胎常為了搶玩具而發生[真]吵。",
+      "q": "這對雙胞胎常為了搶玩具而發生真吵。",
       "wrong": "真",
       "a": "爭",
       "full": "這對雙胞胎常為了搶玩具而發生爭吵。"
     },
     {
       "id": "s5",
-      "q": "在醫生的悉心照顧下，爺爺的身體已經完全康[附]了。",
+      "q": "在醫生的悉心照顧下，爺爺的身體已經完全康附了。",
       "wrong": "附",
       "a": "復",
       "full": "在醫生的悉心照顧下，爺爺的身體已經完全康復了。"
     },
     {
       "id": "s6",
-      "q": "每到春節，民眾都會到寺廟裡[奇]福平安。",
+      "q": "每到春節，民眾都會到寺廟裡奇福平安。",
       "wrong": "奇",
       "a": "祈",
       "full": "每到春節，民眾都會到寺廟裡祈福平安。"
     },
     {
       "id": "s7",
-      "q": "面對這道解不開的數學題，他感到非常煩[腦]。",
+      "q": "面對這道解不開的數學題，他感到非常煩腦。",
       "wrong": "腦",
       "a": "惱",
       "full": "面對這道解不開的數學題，他感到非常煩惱。"
     },
     {
       "id": "s8",
-      "q": "這部宮廷劇描述了妃子們為了爭寵而勾心[豆]角的故事。",
+      "q": "這部宮廷劇描述了妃子們為了爭寵而勾心豆角的故事。",
       "wrong": "豆",
       "a": "鬥",
       "full": "這部宮廷劇描述了妃子們為了爭寵而勾心鬥角的故事。"
     },
     {
       "id": "s9",
-      "q": "王教授學識淵[薄]，是一位博學多聞的學者。",
+      "q": "王教授學識淵薄，是一位博學多聞的學者。",
       "wrong": "薄",
       "a": "博",
       "full": "王教授學識淵博，是一位博學多聞的學者。"
     },
     {
       "id": "s10",
-      "q": "古時候的士兵需要精通[功]箭才能上戰場。",
+      "q": "古時候的士兵需要精通功箭才能上戰場。",
       "wrong": "功",
       "a": "弓",
       "full": "古時候的士兵需要精通弓箭才能上戰場。"
     },
     {
       "id": "s11",
-      "q": "我們應該友愛同學，絕對不能依仗體型以大[期]小。",
+      "q": "我們應該友愛同學，絕對不能依仗體型以大期小。",
       "wrong": "期",
       "a": "欺",
       "full": "我們應該友愛同學，絕對不能依仗體型以大欺小。"
     },
     {
       "id": "s12",
-      "q": "一個人如果不辨善[餓]，很容易誤入歧途。",
+      "q": "一個人如果不辨善餓，很容易誤入歧途。",
       "wrong": "餓",
       "a": "惡",
       "full": "一個人如果不辨善惡，很容易誤入歧途。"
     },
     {
       "id": "s13",
-      "q": "他最近學習態度[賴]散，成績退步了很多。",
+      "q": "他最近學習態度賴散，成績退步了很多。",
       "wrong": "賴",
       "a": "懶",
       "full": "他最近學習態度懶散，成績退步了很多。"
     },
     {
       "id": "s14",
-      "q": "使者帶著珍貴的供品前來宮廷，請求[進]見國王。",
+      "q": "使者帶著珍貴的供品前來宮廷，請求進見國王。",
       "wrong": "進",
       "a": "晉",
       "full": "使者帶著珍貴的供品前來宮廷，請求晉見國王。"
     },
     {
       "id": "s15",
-      "q": "老師為了教導學生，付出了[禁]心竭力的努力。",
+      "q": "老師為了教導學生，付出了禁心竭力的努力。",
       "wrong": "禁",
       "a": "盡",
       "full": "老師為了教導學生，付出了盡心竭力的努力。"
     }
   ]
-};
+}
+
+        
+
+        
+
+        
+const CHAR_ZHUYIN = {"射":"ㄕㄜˋ","箭":"ㄐㄧㄢˋ","剪":"ㄐㄧㄢˇ","煎":"ㄐㄧㄢ","善":"ㄕㄢˋ","戰":"ㄓㄢˋ","站":"ㄓㄢˋ","佔":"ㄓㄢˋ","人":"ㄖㄣˊ","民":"ㄇㄧㄣˊ","眠":"ㄇㄧㄢˊ","皿":"ㄇㄧㄣˇ","爭":"ㄓㄥ","吵":"ㄔㄠˇ","睜":"ㄓㄥ","掙":"ㄓㄥ","康":"ㄎㄤ","復":"ㄈㄨˋ","複":"ㄈㄨˋ","腹":"ㄈㄨˋ","祈":"ㄑㄧˊ","福":"ㄈㄨˊ","折":"ㄓㄜˊ","拆":"ㄔㄞ","煩":"ㄈㄢˊ","惱":"ㄋㄠˇ","腦":"ㄋㄠˇ","瑙":"ㄋㄠˇ","勾":"ㄍㄡ","心":"ㄒㄧㄣ","鬥":"ㄉㄡˋ","角":"ㄐㄩㄝˊ","抖":"ㄉㄡˇ","蚪":"ㄉㄡˇ","博":"ㄅㄛˊ","學":"ㄒㄩㄝˊ","搏":"ㄅㄛˊ","膊":"ㄅㄛˊ","弓":"ㄍㄨㄥ","公":"ㄍㄨㄥ","工":"ㄍㄨㄥ","以":"ㄧˇ","大":"ㄉㄚˋ","欺":"ㄑㄧ","小":"ㄒㄧㄠˇ","期":"ㄐㄧ","棋":"ㄑㄧˊ","惡":"ㄜˋ","餓":"ㄜˋ","愕":"ㄜˋ","懶":"ㄌㄢˇ","散":"ㄙㄢˋ","賴":"ㄌㄞˋ","爛":"ㄌㄢˋ","晉":"ㄐㄧㄣˋ","見":"ㄐㄧㄢˋ","進":"ㄐㄧㄣˋ","禁":"ㄐㄧㄣˋ","盡":"ㄐㄧㄣˋ","力":"ㄌㄧˋ","僅":"ㄐㄧㄣˇ","勁":"ㄐㄧㄥˋ","獵":"ㄌㄧㄝˋ","從":"ㄘㄨㄥˊ","背":"ㄅㄟˋ","後":"ㄏㄡˋ","的":"ㄉㄧˊ","前":"ㄑㄧㄢˊ","袋":"ㄉㄞˋ","中":"ㄓㄨㄥ","抽":"ㄔㄡ","出":"ㄔㄨ","一":"ㄧ","枝":"ㄓ","利":"ㄌㄧˋ","關":"ㄍㄨㄢ","羽":"ㄩˇ","是":"ㄕˋ","位":"ㄨㄟˋ","驍":"ㄒㄧㄠ","勇":"ㄩㄥˇ","膳":"ㄕㄢˋ","將":"ㄐㄧㄤ","軍":"ㄐㄩㄣ","立":"ㄌㄧˋ","下":"ㄒㄧㄚˋ","許":"ㄒㄩˇ","多":"ㄉㄨㄛ","汗":"ㄏㄢˋ","馬":"ㄇㄚˇ","功":"ㄍㄨㄥ","勞":"ㄌㄠˊ","政":"ㄓㄥˋ","府":"ㄈㄨˇ","職":"ㄓˊ","責":"ㄗㄜˊ","應":"ㄧㄥˋ","該":"ㄍㄞ","全":"ㄑㄩㄢˊ","意":"ㄧˋ","為":"ㄨㄟˊ","名":"ㄇㄧㄥˊ","服":"ㄈㄨˊ","務":"ㄨˋ","這":"ㄓㄜˋ","對":"ㄉㄨㄟˋ","雙":"ㄕㄨㄤ","胞":"ㄅㄠ","胎":"ㄊㄞ","常":"ㄔㄤˊ","了":"˙ㄌㄜ","搶":"ㄑㄧㄤ","玩":"ㄨㄢˊ","具":"ㄐㄩˋ","而":"ㄦˊ","發":"ㄈㄚ","生":"ㄕㄥ","真":"ㄓㄣ","在":"ㄗㄞˋ","醫":"ㄧ","悉":"ㄒㄧ","照":"ㄓㄠˋ","顧":"ㄍㄨˋ","爺":"ㄧㄝˊ","身":"ㄕㄣ","體":"ㄊㄧˇ","已":"ㄧˇ","經":"ㄐㄧㄥ","完":"ㄨㄢˊ","附":"ㄈㄨˋ","每":"ㄇㄟˇ","到":"ㄉㄠˋ","春":"ㄔㄨㄣ","節":"ㄐㄧㄝˊ","眾":"ㄓㄨㄥˋ","都":"ㄉㄡ","會":"ㄏㄨㄟˋ","寺":"ㄙˋ","廟":"ㄇㄧㄠˋ","裡":"ㄌㄧˇ","奇":"ㄑㄧˊ","平":"ㄆㄧㄥˊ","安":"ㄢ","面":"ㄇㄧㄢˋ","道":"ㄉㄠˋ","解":"ㄐㄧㄝˇ","不":"ㄅㄨˋ","開":"ㄎㄞ","數":"ㄕㄨˋ","題":"ㄊㄧˊ","他":"ㄊㄚ","感":"ㄍㄢˇ","非":"ㄈㄟ","部":"ㄅㄨˋ","宮":"ㄍㄨㄥ","廷":"ㄊㄧㄥˊ","劇":"ㄐㄩˋ","描":"ㄇㄧㄠˊ","述":"ㄕㄨˋ","妃":"ㄈㄟ","子":"˙ㄗ","們":"˙ㄇㄣ","寵":"ㄔㄨㄥˇ","豆":"ㄉㄡˋ","故":"ㄍㄨˋ","事":"ㄕˋ","王":"ㄨㄤˊ","教":"ㄐㄧㄠˋ","授":"ㄕㄡˋ","識":"ㄕˋ","淵":"ㄩㄢ","薄":"ㄅㄛˊ","聞":"ㄨㄣˊ","者":"ㄓㄜˇ","古":"ㄍㄨˇ","時":"ㄕˊ","候":"ㄏㄡˋ","士":"ㄕˋ","兵":"ㄅㄧㄥ","需":"ㄒㄩ","要":"ㄧㄠ","精":"ㄐㄧㄥ","通":"ㄊㄨㄥ","才":"ㄘㄞˊ","能":"ㄋㄥˊ","上":"ㄕㄤˋ","場":"ㄔㄤˇ","我":"ㄨㄛˇ","友":"ㄧㄡˇ","愛":"ㄞˋ","同":"ㄊㄨㄥˊ","絕":"ㄐㄩㄝˊ","依":"ㄧ","仗":"ㄓㄤˋ","型":"ㄒㄧㄥˊ","個":"ㄍㄜˋ","如":"ㄖㄨˊ","果":"ㄍㄨㄛˇ","辨":"ㄅㄧㄢˋ","很":"ㄏㄣˇ","容":"ㄖㄨㄥˊ","易":"ㄧˋ","誤":"ㄨˋ","入":"ㄖㄨˋ","歧":"ㄑㄧˊ","途":"ㄊㄨˊ","最":"ㄗㄨㄟˋ","近":"ㄐㄧㄣˋ","習":"ㄒㄧˊ","態":"ㄊㄞˋ","度":"ㄉㄨˋ","成":"ㄔㄥˊ","績":"ㄐㄧ","退":"ㄊㄨㄟˋ","步":"ㄅㄨˋ","使":"ㄕˇ","帶":"ㄉㄞˋ","著":"ㄓㄨˋ","珍":"ㄓㄣ","貴":"ㄍㄨㄟˋ","供":"ㄍㄨㄥ","品":"ㄆㄧㄣˇ","來":"ㄌㄞˊ","請":"ㄑㄧㄥˇ","求":"ㄑㄧㄡˊ","國":"ㄍㄨㄛˊ","老":"ㄌㄠˇ","師":"ㄕ","導":"ㄉㄠˇ","付":"ㄈㄨˋ","竭":"ㄐㄧㄝˊ","努":"ㄋㄨˇ"};
 
         const gameState = {
             studentName: '',
@@ -920,7 +1298,13 @@
             results: [],
             isLocked: false,
             enableSpeech: true,
-            currentSelectedSpan: null
+            showZhuyin: false,
+
+
+
+
+
+currentSelectedSpan: null
         };
 
         let timerInterval;
@@ -928,7 +1312,13 @@
         function openSettingsModal() { document.getElementById('settings-modal').style.display = 'block'; }
         function closeSettingsModal() { document.getElementById('settings-modal').style.display = 'none'; }
         function updateVoiceSettings() { gameState.enableSpeech = document.getElementById('enableSpeech').checked; }
+        function updateZhuyinSettings() {
+            gameState.showZhuyin = document.getElementById('showZhuyin').checked;
+            const gameScreen = document.getElementById('gameScreen');
+            if (gameScreen && gameScreen.classList.contains('active') && gameState.questions.length) renderQuestion();
+        }
         function updateRateLabel() { document.getElementById('rateLabel').textContent = document.getElementById('rateRange').value; }
+
         function updateFontScale() {
             const scale = document.getElementById('fontScaleRange').value;
             document.getElementById('fontScaleLabel').textContent = scale + 'x';
@@ -959,6 +1349,11 @@
         }
 
         function restartGame(isReview = false) {
+            gameState.optionOrders = {};
+
+
+
+
             let qs = [];
             if (isReview) {
                 const wrongIndices = [];
@@ -1050,29 +1445,72 @@
             }
         }
 
-        function renderWordQ(q) {
+
+
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+        }
+        function renderZhuyinSyllable(value) {
+            const syllable = String(value || '');
+            const tone = (syllable.match(/[ˊˇˋ˙ˉ]/) || [''])[0];
+            const letters = Array.from(syllable.replace(/[ˊˇˋ˙ˉ\s]/g, ''));
+            if (!letters.length || letters.some((character) => !/[ㄅ-ㄩ]/.test(character))) return escapeHtml(syllable);
+            const count = letters.length;
+            const stackTop = 0.5 + Math.max(0, (3 - count) / 2);
+            const toneTop = stackTop + count - 1;
+            const stack = letters.map((character) => '<span>' + escapeHtml(character) + '</span>').join('');
+            const toneHtml = tone && tone !== 'ˉ' ? '<span class="zhuyin-tone" aria-hidden="true">' + escapeHtml(tone) + '</span>' : '';
+            return '<span class="zhuyin-syllable" role="img" aria-label="' + escapeHtml(syllable) + '" style="--stack-top:' + stackTop + 'em;--tone-top:' + toneTop + 'em"><span class="zhuyin-stack" aria-hidden="true">' + stack + '</span>' + toneHtml + '</span>';
+        }
+        function renderAnnotatedText(text) {
+            return Array.from(String(text ?? '')).map((char) => {
+                const zhuyin = gameState.showZhuyin ? String(CHAR_ZHUYIN[char] || '') : '';
+                if (!zhuyin || !/[\u3400-\u9fff\uF900-\uFAFF]/.test(char)) return escapeHtml(char);
+                return '<span class="zhuyin-char"><span class="zhuyin-base">' + escapeHtml(char) + '</span>' + renderZhuyinSyllable(zhuyin) + '</span>';
+            }).join('');
+        }
+        function renderZhuyinPlaceholder(placeholderHtml, char) {
+            return placeholderHtml;
+        }
+        function renderQuestionTextWithPlaceholders(text, placeholderHtml, placeholderChar = '') {
+            const value = String(text ?? '');
+            const pattern = /(?:\[\s*\]|［\s*］)/g;
+            let output = '', last = 0, match;
+            while ((match = pattern.exec(value))) {
+                output += renderAnnotatedText(value.slice(last, match.index)) + renderZhuyinPlaceholder(placeholderHtml, placeholderChar);
+                last = pattern.lastIndex;
+            }
+            return output + renderAnnotatedText(value.slice(last));
+        }
+function renderWordQ(q) {
             const container = document.getElementById('wordContainer');
             const grid = document.getElementById('optionsGrid');
-            let ansDisplay = '';
+            let answerText = '';
             let isCorrect = false;
             if (gameState.mechanic === 'exam') {
                 const saved = gameState.userAnswers[gameState.currentIndex];
-                ansDisplay = saved ? `<span style="color:#26A69A">${saved.userAnswer}</span>` : '';
+                answerText = saved ? saved.userAnswer : '';
             } else {
                 const res = gameState.results[gameState.currentIndex];
-                if (res && res.isCorrect) { ansDisplay = `<span style="color:#4CAF50">${q.a}</span>`; isCorrect = true; }
+                if (res && res.isCorrect) { answerText = q.a; isCorrect = true; }
             }
-            container.innerHTML = q.q.replace('[]', `<span class="word-placeholder">${ansDisplay}</span>`);
+            const answerHtml = answerText ? '<span style="color:' + (isCorrect ? '#4CAF50' : '#26A69A') + '">' + renderAnnotatedText(answerText) + '</span>' : '';
+            const placeholderHtml = '<span class="word-placeholder">' + answerHtml + '</span>';
+            container.innerHTML = renderQuestionTextWithPlaceholders(q.q, placeholderHtml, q.a);
             if (gameState.enableSpeech) {
                 const icon = document.createElement('span');
                 icon.className = 'speaker-icon'; icon.textContent = '🔊';
-                icon.onclick = (e) => { e.stopPropagation(); speak(q.speakFull || q.full); };
+                const speakText = String(q.speakFull || q.full || '').replace(/\[\s*\]/g, q.a);
+                icon.onclick = (e) => { e.stopPropagation(); speak(speakText); };
                 container.appendChild(icon);
             }
             grid.innerHTML = '';
-            shuffleArray(q.options).forEach(opt => {
+            if (!gameState.optionOrders) gameState.optionOrders = {};
+            if (!gameState.optionOrders[q.id]) gameState.optionOrders[q.id] = shuffleArray([...(q.options || [])]);
+            gameState.optionOrders[q.id].forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = 'option-btn'; btn.textContent = opt;
+                btn.className = 'option-btn'; btn.innerHTML = renderAnnotatedText(opt);
                 if (gameState.mechanic === 'exam') {
                     if (gameState.userAnswers[gameState.currentIndex]?.userAnswer === opt) btn.classList.add('selected-exam');
                     btn.onclick = () => { gameState.userAnswers[gameState.currentIndex] = {questionId: q.id, userAnswer: opt}; renderQuestion(); };
@@ -1099,30 +1537,31 @@
             let isCorrectChallenge = gameState.mechanic === 'challenge' && gameState.results[gameState.currentIndex]?.isCorrect;
             q.q.split('').forEach((char, charIdx) => {
                 const span = document.createElement('span');
-                span.className = 'sentence-char'; span.textContent = char;
+                span.className = 'sentence-char'; span.innerHTML = renderAnnotatedText(char);
                 if (gameState.mechanic === 'exam') {
                     const saved = gameState.userAnswers[gameState.currentIndex];
-                    if (saved && saved.charIndex === charIdx) { span.textContent = saved.userAnswer; span.classList.add('exam-modified'); }
+                    if (saved && saved.charIndex === charIdx) { span.innerHTML = renderAnnotatedText(saved.userAnswer); span.classList.add('exam-modified'); }
                     span.onclick = () => openCorrectionModal(q, char, charIdx, span);
                 } else {
                     if (isCorrectChallenge) {
-                        if (char === q.wrong) { span.textContent = q.a; span.classList.add('challenge-corrected'); }
+                        if (char === q.wrong) { span.innerHTML = renderAnnotatedText(q.a); span.classList.add('challenge-corrected'); }
                     } else span.onclick = () => handleChallengeSentenceClick(q, char, charIdx, span);
                 }
                 container.appendChild(span);
             });
         }
-
         function handleChallengeWordSelect(q, opt, btn) {
             if (gameState.isLocked) return;
             
-            const placeholder = document.querySelector('.word-placeholder');
+            const placeholders = document.querySelectorAll('.word-placeholder');
             
             if (opt === q.a) {
                 gameState.isLocked = true; btn.classList.add('correct');
-                if (placeholder) {
-                    placeholder.innerHTML = `<span style="color:#4CAF50">${opt}</span>`;
-                    placeholder.style.borderBottom = 'none';
+                if (placeholders.length) {
+                    placeholders.forEach((placeholder) => {
+                        placeholder.innerHTML = '<span style="color:#4CAF50">' + renderAnnotatedText(opt) + '</span>';
+                        placeholder.style.borderBottom = 'none';
+                    });
                 }
                 
                 if (!gameState.results[gameState.currentIndex]) gameState.results[gameState.currentIndex] = {question:q, isCorrect:true, passedOnFirstTry:true};
@@ -1131,11 +1570,13 @@
                 else setTimeout(nextQuestionChallenge, 1500);
             } else {
                 btn.classList.add('wrong'); loseLife();
-                if (placeholder) {
-                    placeholder.innerHTML = `<span style="color:#EF5350">${opt}</span>`;
+                if (placeholders.length) {
+                    placeholders.forEach((placeholder) => {
+                        placeholder.innerHTML = '<span style="color:#EF5350">' + renderAnnotatedText(opt) + '</span>';
+                    });
                     setTimeout(() => {
                         if (!gameState.results[gameState.currentIndex]?.isCorrect) {
-                            placeholder.innerHTML = '';
+                            placeholders.forEach((placeholder) => { placeholder.innerHTML = ''; });
                         }
                     }, 500);
                 }
@@ -1143,7 +1584,6 @@
                 setTimeout(() => btn.classList.remove('wrong'), 500);
             }
         }
-
         function handleChallengeSentenceClick(q, char, idx, span) {
             if (gameState.isLocked) return;
             if (char === q.wrong) {
@@ -1175,7 +1615,7 @@
                 const val = input.value.trim(); if (!val) return;
                 if (gameState.mechanic === 'challenge') {
                     if (val === q.a) {
-                        spanElement.textContent = val; spanElement.style.color = '#4CAF50'; modal.style.display = 'none';
+                        spanElement.innerHTML = renderAnnotatedText(val); spanElement.style.color = '#4CAF50'; modal.style.display = 'none';
                         if (!gameState.results[gameState.currentIndex]) gameState.results[gameState.currentIndex] = {question:q, isCorrect:true, passedOnFirstTry:true};
                         else gameState.results[gameState.currentIndex].isCorrect = true;
                         if (gameState.enableSpeech) speak(q.speakFull || q.full, () => setTimeout(nextQuestionChallenge, 500));
@@ -1310,7 +1750,7 @@
             const words = QUESTIONS_DB.word, sents = QUESTIONS_DB.sentence;
             const content = `<html><head><meta charset="utf-8"><style>body{font-family:'標楷體';}.ws-title{text-align:center;font-size:24pt;font-weight:bold;}.ws-header{font-size:14pt;border-bottom:1px solid #000;margin:20pt 0;}.ws-section{font-size:16pt;font-weight:bold;background:#f0f0f0;padding:5pt;margin-top:20pt;}.ws-q{margin:10pt 0;font-size:14pt;}.ans-table{width:100%;border-collapse:collapse;}.ans-table td,th{border:1px solid #000;padding:5pt;text-align:center;}</style></head><body>
                 <div class="ws-title">錯字搜查隊 - 學習單</div><div class="ws-header"><p>範圍：${getRangeText()}</p><p>姓名：______________</p></div>
-                <div class="ws-section">一、詞語填空</div>${words.map((q,i)=>`<div class="ws-q">${i+1}. ${q.q.replace('[]','______')} (${q.options.join('/')})</div>`).join('')}
+                <div class="ws-section">一、詞語填空</div>${words.map((q,i)=>`<div class="ws-q">${i+1}. ${q.q.replace(/(?:\[\s*\]|［\s*］)/g,'______')} (${q.options.join('/')})</div>`).join('')}
                 <div class="ws-section">二、句子改錯</div>${sents.map((q,i)=>`<div class="ws-q">${i+1}. ${q.q} (  )</div>`).join('')}
                 <div style="page-break-before:always;"></div><div class="ws-title">解答卷</div>
                 <div class="ws-section">詞語填空解答</div><table class="ans-table"><tr>${words.map((_,i)=>`<th>${i+1}</th>`).join('')}</tr><tr>${words.map(q=>`<td style="color:red">${q.a}</td>`).join('')}</tr></table>
